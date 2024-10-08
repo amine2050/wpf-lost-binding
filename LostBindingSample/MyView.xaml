@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="LostBindingSample.MyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lostBindingSample="clr-namespace:LostBindingSample"
+             mc:Ignorable="d" 
+             d:DesignWidth="400"
+             d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True, Type={x:Type lostBindingSample:MyViewModel}}">
+  <StackPanel Margin="10">
+    <lostBindingSample:MyCustomInput x:Name="MyCustomInput" Value="{Binding TheValue}"/>
+    <Button Content="Change Value" Command="{Binding ChangeTheValueCommand}" Margin="0 10"/>
+
+    <lostBindingSample:BindingObserver ObservedObject="{Binding ElementName=MyCustomInput}"
+                                       ObservedProperty="{x:Static lostBindingSample:MyCustomInput.ValueProperty}"/>
+  </StackPanel>
+</UserControl>
